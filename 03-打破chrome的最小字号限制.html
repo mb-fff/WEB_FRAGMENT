@@ -5,10 +5,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+<style>
+    .font {
+        font-size: 20px;
+        /* transform 只针对块盒和行块盒有效  */
+        transform: scale(0.5);
+        /* scale是中心缩放，所以还要调整缩放位置 */
+        transform-origin: left center;
+        /* 高度也要做适当的调整 */
+        line-height: 10px;
+    }
+
+    .font1 {
+        font-size: 20px;
+        /* 存在兼容性问题，主要是火狐浏览器不支持 */
+        zoom: .5;
+    }
+</style>
 </head>
 
 <body>
-
+        <h2 class="font">chrome下最小字号为12px</h2>
+        <span class="font">行内元素</span>
+        <h2 class="font1">zoom用法</h2>
 </body>
 
 </html>
