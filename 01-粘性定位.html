@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            border: 1px solid yellow;
+            height: 100vh;
+            overflow: auto;
+        }
+
+        .box {
+            border: 1px solid red;
+            /* 该情景不生效，h2元素与box父元素的距离不会为0 */
+            /* overflow: hidden; */
+        }
+
+        h2 {
+            position: sticky;
+            top: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 粘性定位相对于有设置overflow的父级，如果没有则相对于视口 -->
+    <!-- 只有在该元素与有设置overflow的父级的相对距离可以满足条件时，粘性定位才会生效(比如说，h2元素与有设置overflow的父级相对距离可以为0时才会生效) -->
+    <!-- 当盒子离开该父级时，粘性定位失效 -->
+
+    <!-- 可以做吸附的导航栏 -->
+
+    <div class="container">
+        <div class="box">
+            <h2>A</h2>
+            <p>111</p>
+            <p>111</p>
+            <p>111</p>
+            <p>111</p>
+            <p>111</p>
+        </div>
+        <div class="box">
+            <h2>B</h2>
+            <p>111</p>
+            <p>111</p>
+            <p>111</p>
+            <p>111</p>
+            <p>111</p>
+        </div>
+        <div class="box">
+            <h2>C</h2>
+            <p>111</p>
+            <p>111</p>
+            <p>111</p>
+            <p>111</p>
+            <p>111</p>
+        </div>
+        <div class="box">
+            <h2>D</h2>
+            <p>111</p>
+            <p>111</p>
+            <p>111</p>
+            <p>111</p>
+            <p>111</p>
+        </div>
+        <div class="box">
+            <h2>E</h2>
+            <p>111</p>
+            <p>111</p>
+            <p>111</p>
+            <p>111</p>
+            <p>111</p>
+        </div>
+        <div class="box">
+            <h2>F</h2>
+            <p>111</p>
+            <p>111</p>
+            <p>111</p>
+            <p>111</p>
+            <p>111</p>
+        </div>
+    </div>
+</body>
+
+</html>

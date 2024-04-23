@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h2>在切换至其他标签页后，原页面中的所有setInterval设置的小于1s的间隔都会被置为1s（chrome）</h2>
+
+    <script>
+        let count = 0
+        setInterval(() => {
+            count++
+            console.log(count)
+        }, 200)
+
+        // 监听标签页是否失活
+        document.addEventListener('visibilitychange', function () {
+            console.log(document.visibilityState)
+            if (document.visibilityState === 'hidden') {
+                console.log('监听到切换标签页了')
+            } else {
+                console.log('监听到切换回原页面了')
+            }
+        })
+
+        // 替代方式：使用requestAnimationFrame来模拟定时器
+        // requestAnimationFrame 是一个优秀的浏览器 API，它允许你在下一次页面重绘之前执行指定的函数，从而创建动画效果。
+        // 虽然它在处理动画方面比定时器更有效，但是你仍然可以封装它以达到与定时器相似的效果。
+
+        function animatedTimer(callback, interval) {
+            let startTime = null;
+
+            function animation(currentTime) {
+                if (!startTime) startTime = currentTime;
+                const elapsed = currentTime - startTime;
+                if (elapsed >= interval) {
+                    callback();
+                    startTime = currentTime;
+                }
+                requestAnimationFrame(animation);
+            }
+
+            requestAnimationFrame(animation);
+        }
+
+        // 使用示例
+        animatedTimer(() => {
+            console.log("他总是1s执行一次");
+        }, 1000);
+
+    </script>
+</body>
+
+</html>
