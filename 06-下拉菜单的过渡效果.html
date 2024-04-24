@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .text-select .text {
+            width: 300px;
+            height: 50px;
+            box-sizing: border-box;
+        }
+
+        .text-select .select {
+            width: 300px;
+            box-sizing: border-box;
+            border: 1px solid #333;
+
+            display: flex;
+            flex-direction: column;
+            margin-top: -2px;
+            padding: 0 20px;
+            /* height: 0; */
+            /* 第一种方式 */
+            /* max-height: 0;
+            transition: 1s; 
+            overflow: hidden; */
+
+            /* 第三种，效果最好，只是渲染效率会比较高，因为需要不停计算高度，做回流 */
+            transform-origin: center top;
+            z-index: -1;
+            transform: scaleY(0);
+            transition: 1s;
+        }
+
+        .text-select .text:focus~.select {
+            /* max-height: 300px; */
+            transform: scaleY(1);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="text-select">
+        <input class="text" type="text">
+        <div class="select">
+            <span>123</span>
+            <span>123</span>
+            <span>123</span>
+            <span>123</span>
+            <span>123</span>
+        </div>
+    </div>
+
+    <!-- <script>
+        // 第二种，使用js解决，代码量会多一点
+        const input = document.querySelector('.text')
+        const select = document.querySelector('.select')
+
+        input.onfocus = function () {
+            select.style.transition = 'none'
+            select.style.height = 'auto'
+            const height = select.offsetHeight
+            console.log(height)
+            select.style.height = 0
+            select.offsetHeight;
+            select.style.transition = '1s'
+            select.style.height = height + 'px'
+        }
+
+        input.onblur = function () {
+            select.style.transition = '1s'
+            select.style.height = 0
+        }
+    </script> -->
+</body>
+
+</html>
