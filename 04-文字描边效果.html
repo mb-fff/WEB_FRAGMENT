@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            width: 100%;
+            height: 100vh;
+            background-color: green;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .text {
+            font-size: 60px;
+            letter-spacing: 10px;
+            /* text-shadow:
+                0 2px #fff,
+                0 -2px #fff,
+                -2px 2px #fff,
+                2px 2px #fff,
+                -2px 0 #fff,
+                2px 0 #fff; */
+
+            /* 非标准属性，描边效果很平滑，而且文字颜色可以设置为透明的 (描边尺寸，描边颜色) */
+            -webkit-text-stroke: 2px #fff;
+
+            color: transparent;
+        }
+    </style>
+</head>
+
+<body>
+    <span class="text">这是一段文本</span>
+</body>
+
+</html>
