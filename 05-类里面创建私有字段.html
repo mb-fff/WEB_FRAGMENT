@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 私有字段：只能在类的内部访问
+        // 以前规范的私有字段，使用 _ 标识，只是一种规范，其实还是可以访问
+        class A {
+            constructor() {
+                this._a = 1
+            }
+        }
+        const a = new A()
+        console.log(a)
+
+        // 现在原生支持私有字段，使用 # 标识
+        class B {
+            // 定义一个私有字段，必须有此声明才可以
+            #b
+            constructor() {
+                this.#b = 1
+            }
+            #fn() {
+                console.log('111')
+            }
+        }
+        const b = new B()
+        console.log(b)
+    </script>
+</body>
+
+</html>
